@@ -9,6 +9,7 @@
  */
 #include <stdio.h>
 #include <stdint.h>
+#include <inttypes.h> // included for using macros and try to print uint64_t
 
 // body of function without declaration
 uint16_t swap_16(uint16_t MSB)
@@ -51,6 +52,8 @@ int main(void)
 	printf("Bytes %d   Value %#x   Address %#x \n", sizeof(test_value), test_value, &test_value);
 	printf(" Result 16 = 0x%x\n", swap_16(test_value));
 	printf(" Result 32 = %#x\n", swap_32(test_value));
+	// included for using macros and try to print uint64_t
+	printf("%" PRIXMAX "\n", swap_64(test_value));
 	printf(" Result 64 = %#x\n", swap_64(test_value));
 
 	printf(" Have a good day :) \n Work was finished.");
