@@ -4,35 +4,18 @@
  *  Created on: Nov 14, 2019
  *      Author: YS
  *
- *      Ex1: Write swap16,  swap32, swap64 functions
- *      that swap, bytes in uint16_t, unit32_t, and uint64_t functions.
+ *      Ex2: Write function that converts RGB 888 to RGB 565.
  */
 #include <stdio.h>
-#include <stdint.h>
-#include <inttypes.h> // included for using macros and try to print uint64_t
 
-// body of function without declaration
-uint16_t swap_16(uint16_t MSB)
-{
-	uint16_t LSB;
-	LSB = ((MSB & 0xFF) <<8 ) | (MSB >>8);
-	return LSB;
-}
-uint32_t swap_32(uint32_t MSB)
-{
-	uint32_t LSB;
-	LSB = (swap_16(MSB)<<16) | (swap_16(MSB>>16));
-	return LSB;
-}
-uint64_t swap_64(uint64_t MSB)
-{
-	uint64_t LSB;
-	LSB = ((uint64_t)(swap_32(MSB))<<32) | (swap_32(MSB>>32));
-	return LSB;
+void RGB_888_to_565(int *r, int *g, int *b)
+ {
+	*r >>= 3; *r *= 5;
+	*g >>= 2; *g *= 3;
+	*b >>= 3; *b *= 5;
 }
 
-int main(void)
-{
+int main(void) {
 	/*
 	 * The Eclipse console has buffering problems on Windows.
 	 * Basically, it doesn't flush the streams when a newline is received.
@@ -43,27 +26,16 @@ int main(void)
 	setvbuf(stderr, NULL, _IONBF, 0);
 
 	// initialization of variable
-	uint64_t test_value;
-	test_value = 0x1122334455667788;
+	int R, G, B;
 
-	printf(" Ex.1. Swap MSB to LSB in uint16_t, uint32_t, uint64_t. \n");
+	printf(" Ex2: Convert RGB 888 to RGB 565. \n");
+	// read weight from customer
+	printf(" Enter R G B numbers : ");
+	scanf("%d %d %d", &R, &G, &B);
+	RGB_888_to_565(&R, &G, &B);
 
-	printf(" Result 16 = 0x%x\n", swap_16(0xABCD));
-	printf(" Result 32 = %#x\n", swap_32(0x1A2B3C4D));
-	//printf(" Result 64 = %#x\n", swap_64(test_value));
-	// included for using macros and try to print uint64_t
-	printf(" Result 64 = %#" PRIXMAX "\n", swap_64(test_value));
+	printf(" Converted RGB to 565 : %i \t%i \t%i\n", R, G, B);
 
-
-//	// second method for printing
-//	uint64_t input;
-//	input = swap_64(test_value);
-//	uint8_t i;
-//	unsigned char byte;
-//	for (int i = 0; i < sizeof(input); i++) {
-//		byte = ((unsigned char*) (&input))[i];
-//		printf("%02X ", byte);
-//	}
 	printf(" Have a good day :) \n Work was finished.");
 	return 0;
 }
