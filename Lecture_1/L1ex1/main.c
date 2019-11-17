@@ -27,7 +27,7 @@ uint32_t swap_32(uint32_t MSB)
 uint64_t swap_64(uint64_t MSB)
 {
 	uint64_t LSB;
-	LSB = (swap_32(MSB)<<32) | (swap_32(MSB>>32));
+	LSB = ((uint64_t)(swap_32(MSB))<<32) | (swap_32(MSB>>32));
 	return LSB;
 }
 
@@ -44,18 +44,26 @@ int main(void)
 
 	// initialization of variable
 	uint64_t test_value;
+	test_value = 0x1122334455667788;
 
 	printf(" Ex.1. Swap MSB to LSB in uint16_t, uint32_t, uint64_t. \n");
 
-	printf(" Enter test_value for swap: ");
-	scanf("%x", &test_value);
-	printf("Bytes %d   Value %#x   Address %#x \n", sizeof(test_value), test_value, &test_value);
-	printf(" Result 16 = 0x%x\n", swap_16(test_value));
-	printf(" Result 32 = %#x\n", swap_32(test_value));
+	printf(" Result 16 = 0x%x\n", swap_16(0xABCD));
+	printf(" Result 32 = %#x\n", swap_32(0x1A2B3C4D));
+	//printf(" Result 64 = %#x\n", swap_64(test_value));
 	// included for using macros and try to print uint64_t
-	printf("%" PRIXMAX "\n", swap_64(test_value));
-	printf(" Result 64 = %#x\n", swap_64(test_value));
+	printf(" Result 64 = %#" PRIXMAX "\n", swap_64(test_value));
 
+
+//	// second method for printing
+//	uint64_t input;
+//	input = swap_64(test_value);
+//	uint8_t i;
+//	unsigned char byte;
+//	for (int i = 0; i < sizeof(input); i++) {
+//		byte = ((unsigned char*) (&input))[i];
+//		printf("%02X ", byte);
+//	}
 	printf(" Have a good day :) \n Work was finished.");
 	return 0;
 }
