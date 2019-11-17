@@ -22,7 +22,7 @@ int main(void) {
 	// initialization of variable
 	float height, weight, perimeter, area;
 
-	printf(" Ex.3. Calculate perimeter and area of rectangle. \n\n");
+	printf(" Ex.3. Calculate perimeter and area of rectangle. \n");
 
 	// read height from customer
 	printf(" Enter height of rectangle (in meters) : ");
