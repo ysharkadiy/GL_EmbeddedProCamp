@@ -3,3 +3,4 @@
 *.cproject
 *.project
 /Lecture_1/*/.gitignore
+sh.exe.stackdump
