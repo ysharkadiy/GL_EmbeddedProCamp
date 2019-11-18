@@ -55,7 +55,8 @@ int main(void)
     scanf("%d", &array_size);
 
     // Allocates the memory for 'array_size' elements.
-    data = (int*)calloc(array_size, sizeof(int));
+    data = (int*)calloc(array_size, sizeof(int));//here used calloc() for
+    // allocates the specified number of bytes and initialize them to zero
     if(data == NULL)
     {
     	printf(" Error!!! Memory not allocated.");
