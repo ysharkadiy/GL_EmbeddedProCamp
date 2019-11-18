@@ -30,10 +30,9 @@ int main(void)
     char digital_string[256] = { 0 };
 
 	printf(" Ex.1. Copy all digits from input string to output string. \n");
-	// read divider from customer
+	// read string from customer
 	printf(" Enter string: \n");
 	gets(initial_string);
-//	scanf("%d", &divider);
 
 	copy_only_digits(initial_string, digital_string);
 	puts(digital_string);
