@@ -9,6 +9,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int find_bigest_el(int arr_s, int *data_ptr)
+{
+	int max = 0;
+	// Loop to store largest number at address data
+	for(int i = 0; i < arr_s; i++)
+	{
+		// Change "<" to ">" if you want to find the smallest number
+		if(max < *(data_ptr + i))
+		{
+			max = *(data_ptr + i);
+		}
+	}
+	return max;
+}
+
+void fill_array(int arr_s, int *data_ptr)
+{
+	// Stores the number entered by the user or random.
+	for(int i = 0; i < arr_s; i++)
+	{
+		//printf("Enter Number %d: ", i + 1);
+		//scanf("%d", data + i);
+		*(data_ptr+i) = rand();
+		printf("%d, ", *(data_ptr+i));
+	}
+}
+
 int main(void)
 {
 	/*
@@ -36,24 +63,9 @@ int main(void)
     }
     printf("\n");
 
-    // Stores the number entered by the user or random.
-    for(int i = 0; i < array_size; i++)
-    {
-    	//printf("Enter Number %d: ", i + 1);
-    	//scanf("%d", data + i);
-    	*(data+i) = rand();
-    	printf("%d, ", *(data+i));
-    }
+    fill_array(array_size, data);
+    max_value = find_bigest_el(array_size, data);
 
-    // Loop to store largest number at address data
-    for(int i = 0; i < array_size; i++)
-    {
-    	// Change "<" to ">" if you want to find the smallest number
-    	if(max_value < *(data + i))
-    	{
-    		max_value = *(data + i);
-    	}
-    }
     printf("\n Largest element = %d \n", max_value);
     free(data);
 
