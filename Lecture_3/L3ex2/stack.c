@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "stack.h"
-#define MAX_STECK_ELEMENTS 10
+#define MAX_STACK_ELEMENTS 10
 
 void Push(stack_t **topRef, int newValue)
 {
@@ -54,7 +54,7 @@ int IsFull(stack_t *top)
 		temp = temp->next;
 		el_num++;
 	}
-	if (el_num>=MAX_STECK_ELEMENTS-1)
+	if (el_num>=MAX_STACK_ELEMENTS-1)
 		return 1;
 	else
 		return 0;
