@@ -1,0 +1,8 @@
+*.metadata/
+*.settings
+*.cproject
+*.project
+/Lecture_1/*/.gitignore
+sh.exe.stackdump
+/Lecture_2/*/.gitignore
+/Lecture_3/*/.gitignore
