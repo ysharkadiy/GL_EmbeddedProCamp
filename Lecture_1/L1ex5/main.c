@@ -19,6 +19,7 @@ int factorial(int x)
 	}
 	return f_value;
 }
+
 // second method for factorial calculation
 int fact(int x)
 {
@@ -28,18 +29,18 @@ int fact(int x)
 	}
 	else
 	{
-		return x;
+		return (x!=0?x:1);
 	}
 }
 
 int main(void)
 {
 	// initialization of variable
-	int test_value = 10, f_result = 1;
+	int test_value = 1, f_result = 1;
 
 	printf(" Ex5: Write a C program to compute factorial of 10. \n");
 	// compute factorial of 10 by function and print out result
-	printf(" Factorial of 10 = %d \n", factorial(test_value));
+	printf(" Factorial of %d = %d \n", test_value, factorial(test_value));
 	printf(" Second method = %d \n", fact(test_value));
 	// third method
 	for(int i = 1; i <= test_value; i++)
