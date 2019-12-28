@@ -22,18 +22,32 @@ int main(void)
 	setvbuf(stderr, NULL, _IONBF, 0);
 
 	// initialization of variable
-	int divider, max_number = 500, min_number = 1;
+	unsigned int divider, max_number = 500, min_number = 1;
 	printf(" Ex.6. Print all number which divided by a number specified by user from 1 to 500. \n");
 	// read divider from customer
-	printf(" Enter divider: ");
+	printf(" Enter unsigned integer divider: ");
 	scanf("%d", &divider);
-	for(int i = min_number; i <= max_number; i++)
+
+	if (divider >= min_number && divider <= max_number)
 	{
-		if (i%divider == 0)
+		for (int i = min_number; i <= max_number; i++)
 		{
-			printf("%d\n", i);
+			if (i % divider == 0)
+			{
+				printf("%d\n", i);
+			}
 		}
 	}
+	else
+	{
+		if (divider == 0)
+			printf(" You can't divide by zero!\n");
+		if (divider > max_number)
+			printf(" In range from 1 to 500 isn't found number which integer divide to user number!\n");
+		else
+			printf(" Incorrect input divider!\n");
+	}
+
 	printf(" Have a good day :) \n Work was finished.");
 	return 0;
 }
