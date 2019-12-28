@@ -57,17 +57,21 @@ int main(void)
     // Allocates the memory for 'array_size' elements.
     data = (int*)calloc(array_size, sizeof(int));//here used calloc() for
     // allocates the specified number of bytes and initialize them to zero
-    if(data == NULL)
+//    printf("\n data len = %d \n", sizeof(data));
+    if( (data == NULL) || (array_size <= 0))
     {
     	printf(" Error!!! Memory not allocated.");
     	exit(0);
     }
-    printf("\n");
 
     fill_array(array_size, data);
+    printf("\n");
     max_value = find_bigest_el(array_size, data);
 
-    printf("\n Largest element = %d \n", max_value);
+    if (max_value != 0)
+    {
+    	printf(" Largest element = %d \n", max_value);
+    }
     free(data);
 
 
