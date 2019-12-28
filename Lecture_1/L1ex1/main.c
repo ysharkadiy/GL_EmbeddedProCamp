@@ -14,21 +14,20 @@
 // body of function without declaration
 uint16_t swap_16(uint16_t MSB)
 {
-	uint16_t LSB;
-	LSB = ((MSB & 0xFF) <<8 ) | (MSB >>8);
-	return LSB;
+	MSB = ((MSB & 0xFF) <<8 ) | (MSB >>8);
+	return MSB;
 }
+
 uint32_t swap_32(uint32_t MSB)
 {
-	uint32_t LSB;
-	LSB = (swap_16(MSB)<<16) | (swap_16(MSB>>16));
-	return LSB;
+	MSB = (swap_16(MSB)<<16) | (swap_16(MSB>>16));
+	return MSB;
 }
+
 uint64_t swap_64(uint64_t MSB)
 {
-	uint64_t LSB;
-	LSB = ((uint64_t)(swap_32(MSB))<<32) | (swap_32(MSB>>32));
-	return LSB;
+	MSB = ((uint64_t)(swap_32(MSB))<<32) | (swap_32(MSB>>32));
+	return MSB;
 }
 
 int main(void)
