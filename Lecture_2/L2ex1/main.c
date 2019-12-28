@@ -11,6 +11,8 @@
 #include <string.h>
 #include <stdint.h>
 
+#define IS_EMPTY_STR(X) ( (strlen(X)<=1)/*length check*/ || (X[0] == '\0')/*content check*/)
+
 // declaration of functions
 void copy_only_digits(char *input_str, char *output_str);
 
@@ -26,17 +28,26 @@ int main(void)
 	setvbuf(stderr, NULL, _IONBF, 0);
 
 	// initialization of variable
-    char initial_string[256];
-    char digital_string[256] = { 0 };
+    char initial_string[1000] = "";
+    char digital_string[1000] = "";
 
 	printf(" Ex.1. Copy all digits from input string to output string. \n");
 	// read string from customer
 	printf(" Enter string: \n");
-	gets(initial_string);
+	fgets(initial_string, sizeof(initial_string), stdin);
+	if (!IS_EMPTY_STR(initial_string))
+	{
+		puts(initial_string);
+		printf(" initial_string = %d\n", strlen(initial_string));
 
-	copy_only_digits(initial_string, digital_string);
-	puts(digital_string);
-
+		copy_only_digits(initial_string, digital_string);
+		if (!IS_EMPTY_STR(digital_string))
+		{
+			puts(digital_string);
+		}
+		else printf(" Output digital string is empty!\n");
+	}
+	else printf(" Initial string is empty!\n");
 
 	printf(" Have a good day :) \n Work was finished.");
 	return 0;
