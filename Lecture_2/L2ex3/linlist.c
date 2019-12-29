@@ -16,59 +16,80 @@ void ListAddToEnd(LinList *head, char newValue)
 	new->data = newValue;
 	new->next = NULL;
 
-	LinList *temp = head;
-	while(temp->next != NULL)
+	while(head->next != NULL)
 	{
-		temp = temp->next;
+		head = head->next;
 	}
-	temp->next = new;
+	head->next = new;
 }
 
 void ListRemoveFromEnd(LinList *head)
 {
-	LinList *temp = head;
-	while(temp->next->next != NULL)
+	if (head == NULL)
 	{
-		temp = temp->next;
+		printf(" Linked List is empty!\n");
 	}
-	free(temp->next);
-	temp->next = NULL;
+	else
+	{
+		if (head->next == NULL)
+		{
+//			free(head);
+//			head = NULL;
+			head->data = '\0';
+			printf(" The last element from Linked List was removed!\n");
+		}
+		else
+		{
+			while (head->next->next != NULL)
+			{
+				head = head->next;
+			}
+			free(head->next);
+			head->next = NULL;
+		}
+	}
 }
 
 void ListIs(LinList *head, char data)
 {
-	LinList *temp = head;
 	unsigned int index = 0;
 	bool flagToFindData = false;
-	while(temp->next != NULL)
+	while(head->next != NULL)
 	{
-		if(temp->data != data)
+		if(head->data != data)
 		{
-			temp = temp->next;
+			head = head->next;
 			index++;
 		}
 		else
 		{
 			flagToFindData = true;
-			printf("\n Num of element : %c\n Index of element : %u", data, index);
-			temp = temp->next;
+			printf(" Num of element : %c\n Index[0:end] of element : %u", data, index);
+			head = head->next;
 			index++;
 		}
 	}
 	if(flagToFindData == 0)
 	{
-		printf("\n Message: The data %c didn't find in that LinkedList!", data);
+		printf(" Message: The data %c didn't find in that LinkedList!\n", data);
 	}
 }
 
 void DisplayingLinkedList(LinList *head)
 {
-	LinList *temp = head;
-	printf("\n List elements are - ");
-	while(temp != NULL)
+	if ( (head == NULL) || (head->data == '\0') )
 	{
-		printf("%c---> ", temp->data);
-		temp = temp->next;
+		printf(" Linked List is empty!\n");
+	}
+	else
+	{
+		printf("\n List elements are - ");
+		while (head != NULL)
+		{
+			printf("%c---> ", head->data);
+			head = head->next;
+		}
+		printf("\n");
 	}
 }
 

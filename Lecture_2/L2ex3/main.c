@@ -36,6 +36,7 @@ int main()
     if (first_list == NULL)
     {
     	printf(" Malloc error! \n");
+    	exit(0);
     }
 
     //add more data to linked list
@@ -68,10 +69,16 @@ int main()
 
     //check if functions work is correct
     DisplayingLinkedList(first_list);
-    ListIs(first_list, '7');
-    ListRemoveFromEnd(first_list);
-    DisplayingLinkedList(first_list);
-    DynamicMemoryFREE(first_list);
+	ListIs(first_list, '7');
+	for (int i = 0; i < 11; i++)
+	{
+		ListRemoveFromEnd(first_list);
+		DisplayingLinkedList(first_list);
+	}
+
+//    DynamicMemoryFREE(first_list);
+    free(first_list);
+
 
     printf("\n Have a good day :) \n Work was finished.");
     return 0;
