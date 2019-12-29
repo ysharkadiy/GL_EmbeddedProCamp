@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#define IS_EMPTY_STR(X) ( (strlen(X)<1)/*length check*/ || (X[0] == '\0')/*content check*/)
+
 /**
  * copy_str() - Copies one string to another.
  * @soursestr_ptr: Pointer to source string for coping.
@@ -44,16 +46,22 @@ int main()
 	printf(" Ex.1. Copies one string to another. \n");
 
 	// initialization of variable
-	char first_str[100], second_str[100];
+	char first_str[1000], second_str[1000];
+	printf(" Please keep in mind that string should have init length [%d]. \n", strlen(first_str));
 
     printf(" Enter String to coping = ");
-    gets(first_str);
+    fgets(first_str, sizeof(first_str), stdin);
+//    gets(first_str);
+	if IS_EMPTY_STR(first_str)
+		printf(" Input string is empty. \n");
+	else
+	{
+		copy_str(first_str, second_str);
+		printf(" Result of copying : %s\n", second_str); // could be used puts() or fputs()
+	}
 
-    copy_str(first_str, second_str);
-	printf(" Result of copying : %s\n", second_str);// could be used puts() or fputs()
-
-    printf("\n Have a good day :) \n Work was finished.");
-    return 0;
+	printf(" Have a good day :) \n Work was finished.");
+	return 0;
 }
 
 
