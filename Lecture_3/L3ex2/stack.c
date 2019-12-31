@@ -110,6 +110,11 @@ void DisplayingStack(stack_t *top)
 void DynamicMemoryFREE(stack_t *top)
 {
 	stack_t *temp = top;
+	if (temp == NULL)
+	{
+		printf(" Pointer is empty! \n");
+		exit(1);
+	}
 	while(temp->next == NULL)
 	{
 		while(temp->next->next != NULL)
