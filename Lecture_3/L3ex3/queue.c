@@ -1,5 +1,5 @@
 /*
- * queue.c
+ * q.c
  *
  *  Created on: Nov 24, 2019
  *      Author: YS
@@ -14,13 +14,29 @@
 #include "queue.h"
 #define MAX_QUEUE_ELEMENTS 5
 
-int items[MAX_QUEUE_ELEMENTS] = {};// Initialization of queue
-int Qfront = -1;// start index of the queue
-int Qend = -1;// end index in the queue
+/**
+ * struct Queue - It's structure with int array of MAX_QUEUE_ELEMENTS size.
+ * @items: int array of data.
+ * @Qfront: start index of the Queue.
+ * @Qend: end index in the Queue.
+ *
+ */
+static struct Queue
+{
+	int items[MAX_QUEUE_ELEMENTS]; // Initialization of Queue
+	int Qfront; // start index of the Queue
+	int Qend; // end index in the Queue
+} q;
+
+void initQueue()
+{
+	q.Qfront = -1;
+	q.Qend = -1;
+}
 
 int isFull()
 {
-	if( (Qfront == Qend + 1) || (Qfront == 0 && Qend == MAX_QUEUE_ELEMENTS-1))
+	if( (q.Qfront == q.Qend + 1) || (q.Qfront == 0 && q.Qend == MAX_QUEUE_ELEMENTS-1))
 		return 1;
 	else
 		return 0;
@@ -28,7 +44,7 @@ int isFull()
 
 int isEmpty()
 {
-	if(Qfront == -1)
+	if(q.Qfront == -1)
 		return 1;
 	else
 		return 0;
@@ -44,10 +60,10 @@ void putQueue(int value)
 	{
 		if(isEmpty())
 		{
-			Qfront = 0;
+			q.Qfront = 0;
 		}
-		Qend = (Qend + 1) % MAX_QUEUE_ELEMENTS;
-		items[Qend] = value;
+		q.Qend = (q.Qend + 1) % MAX_QUEUE_ELEMENTS;
+		q.items[q.Qend] = value;
 		printf(" Inserted -> %d \n", value);
 	}
 }
@@ -62,15 +78,15 @@ int getQueue()
 	}
 	else
 	{
-		element = items[Qfront];
-		if (Qfront == Qend)
+		element = q.items[q.Qfront];
+		if (q.Qfront == q.Qend)
 		{
-			Qfront = -1;
-			Qend = -1;
+			q.Qfront = -1;
+			q.Qend = -1;
 		} /* Q has only one element, so it's reset the queue after dequeing it.*/
 		else
 		{
-			Qfront = (Qfront + 1) % MAX_QUEUE_ELEMENTS;
+			q.Qfront = (q.Qfront + 1) % MAX_QUEUE_ELEMENTS;
 		}
 		printf(" Deleted element -> %d \n", element);
 		return(element);
@@ -84,14 +100,14 @@ void displayQueue()
 		printf(" Empty Queue! \n");
 	else
 	{
-		printf(" Front -> %d \n", Qfront);
+		printf(" Front -> %d \n", q.Qfront);
 		printf(" Items -> ");
-		for(i = Qfront; i!=Qend; i=(i+1)%MAX_QUEUE_ELEMENTS)
+		for(i = q.Qfront; i!=q.Qend; i=(i+1)%MAX_QUEUE_ELEMENTS)
 		{
-			printf("%d ",items[i]);
+			printf("%d ",q.items[i]);
 		}
-		printf("%d ",items[i]);
-		printf("\n Rear -> %d \n",Qend);
+		printf("%d ",q.items[i]);
+		printf("\n Tail -> %d \n",q.Qend);
 	}
 }
 
@@ -105,6 +121,6 @@ int readQueue()
 	}
 	else
 	{
-		return items[Qfront];
+		return q.items[q.Qfront];
 	}
 }

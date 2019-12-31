@@ -14,6 +14,11 @@
 #define QUEUE_H_
 
 /**
+ * initQueue() - Create empty element of queue.
+ */
+void initQueue();
+
+/**
  * putQueue() - Add element to end of queue.
  * @value: Element that will be add to Queue..
  */
@@ -52,7 +57,7 @@ int IsEmpty();
 int IsFull();
 
 /**
- * Peek() - Get the value of the front of queue without removing it.
+ * readQueue() - Get the value of the front of queue without removing it.
  *
  * Return: int value from Queue.
  */

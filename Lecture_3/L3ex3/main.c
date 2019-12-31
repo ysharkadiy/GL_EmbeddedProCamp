@@ -29,10 +29,13 @@ int main()
 	// initialization of variable
 	int queue_element = 0;
 
+   // before using Queue Abstract Data Type (ADT) should initQueue
+	initQueue();
+
 	//getQueue is not possible on empty queue
 	getQueue();
 	printf(" Enter value which will be contain to Queue : \n");
-	for(int i=0; i<6; i++)
+	for(int i=0; i<5; i++)
 	{
 		queue_element = rand()%50;
 		printf(" el[%d] = %d", i, queue_element);
