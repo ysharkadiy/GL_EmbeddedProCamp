@@ -1,0 +1,27 @@
+--cpu=Cortex-M4.fp.sp
+"gl_hal_uart_withdma2\startup_stm32f303xc.o"
+"gl_hal_uart_withdma2\main.o"
+"gl_hal_uart_withdma2\stm32f3xx_it.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal_msp.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal_tim.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal_tim_ex.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal_uart.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal_uart_ex.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal_rcc.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal_rcc_ex.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal_gpio.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal_dma.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal_cortex.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal_pwr.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal_pwr_ex.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal_flash.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal_flash_ex.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal_i2c.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal_i2c_ex.o"
+"gl_hal_uart_withdma2\stm32f3xx_hal_exti.o"
+"gl_hal_uart_withdma2\system_stm32f3xx.o"
+--library_type=microlib --strict --scatter "GL_HAL_UART_withDMA2\GL_HAL_UART_withDMA2.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "GL_HAL_UART_withDMA2.map" -o GL_HAL_UART_withDMA2\GL_HAL_UART_withDMA2.axf
