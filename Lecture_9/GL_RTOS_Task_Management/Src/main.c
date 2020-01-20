@@ -393,13 +393,13 @@ void StartT3_PushButton(void *argument)
        /* definition and creation of myT4_OrangeLed */
 		const osThreadAttr_t myT4_OrangeLed_attributes = {
 		.name = "myT4_OrangeLed",
-		.priority = (osPriority_t) osPriorityLow2,
+		.priority = (osPriority_t) osPriorityLow,
 		.stack_size = 128
 		};
 		myT4_OrangeLedHandle = osThreadNew(StartT4_OrangeLed, NULL, &myT4_OrangeLed_attributes);
 		
 		/* Change Priority of myT4_OrangeLed task */
-		//vTaskPrioritySet( myT4_OrangeLedHandle, ( uxPriority + 1 ) );
+		vTaskPrioritySet( myT4_OrangeLedHandle, ( uxPriority + 1 ) );
 		HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_13);
 	   //vTaskDelete(myT4_OrangeLedHandle);
 	   //vTaskDelete(NULL);
