@@ -24,7 +24,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "semphr.h"
+#include "semphr.h" // ARM.FreeRTOS::RTOS:Core & added to use raw callback without wrapper
 #include "task.h"
 /* USER CODE END Includes */
 
@@ -40,47 +40,36 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
+#define N_PHILOSOPHERS  5 // Total number of philosophers
 #define  PHIL1 0
 #define  PHIL2 1
 #define  PHIL3 2
 #define  PHIL4 3
 #define  PHIL5 4
 
+#define THINKING 0	//status for time when philosopher is thinking
+#define WAITING  1 	//status for time when philosopher is waiting for forks
+#define EATING   2  //status for time when philosopher is eating
 
-#define RESET_TIMEOUT_SEC   5
-#define Philosofer_DELAY    0x0FFF
-#define Philosofer_NUMBER   5
-#define Phiholofer_THINKING 0	  //status for time when philosopher is thinking
-#define Phiholofer_WAITING 	1 	//status for time when philosopher is waiting for forks
-#define Phiholofer_EATING 	2  	//status for time when philosopher is eating
-
-#define LEFT_Fork_NUMBER(i) 	(i + Philosofer_NUMBER - 1) % Philosofer_NUMBER 
-#define RIGHT_Fork_NUMBER(i)  (i + 1) % Philosofer_NUMBER
-
+#define LEFT_Fork_NUMBER(i)  (i + N_PHILOSOPHERS - 1) % N_PHILOSOPHERS  
+#define RIGHT_Fork_NUMBER(i) (i + 1) % N_PHILOSOPHERS 
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef huart1;
 DMA_HandleTypeDef hdma_usart1_tx;
 
+/* USER CODE BEGIN PV */
 osThreadId_t myTask01Handle;
 osThreadId_t myTask02Handle;
 osThreadId_t myTask03Handle;
 osThreadId_t myTask04Handle;
 osThreadId_t myTask05Handle;
-osSemaphoreId_t myBinarySem01Handle;
-osSemaphoreId_t myBinarySem02Handle;
-osSemaphoreId_t myBinarySem03Handle;
-osSemaphoreId_t myBinarySem04Handle;
-osSemaphoreId_t myBinarySem05Handle;
 
-/* USER CODE BEGIN PV */
-volatile uint8_t philosopherStatus[Philosofer_NUMBER] = {0}; //for start of the program all philosophers are thinking
+SemaphoreHandle_t xSemaphorePhilosofer[N_PHILOSOPHERS] = {NULL}; //semaphores for each of philosofer
+SemaphoreHandle_t xSemaphoreTakingFork = NULL; // semaphore for fork taking
 
-TaskHandle_t myTaskHandle[Philosofer_NUMBER]; //handler for myTask_Philos_1_to_5
-SemaphoreHandle_t xSemaphorePhilosofer[Philosofer_NUMBER] = {NULL}; //semaphores for each of philosofer
-SemaphoreHandle_t xSemaphoreTakingFork = NULL; // semafor for fork taking
-
+volatile uint8_t philosopherStatus[N_PHILOSOPHERS ] = {0}; //for start of the program all philosophers are thinking
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -88,13 +77,14 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_USART1_UART_Init(void);
+
+/* USER CODE BEGIN PFP */
 void StartTask01(void *argument);
 void StartTask02(void *argument);
 void StartTask03(void *argument);
 void StartTask04(void *argument);
 void StartTask05(void *argument);
 
-/* USER CODE BEGIN PFP */
 void takeFork (uint8_t);
 void tryToEat(uint8_t);
 void putFork (uint8_t);
@@ -147,67 +137,31 @@ int main(void)
   /* USER CODE END RTOS_MUTEX */
 
   /* Create the semaphores(s) */
-  /* definition and creation of myBinarySem01 */
-//  const osSemaphoreAttr_t myBinarySem01_attributes = {
-//    .name = "myBinarySem01"
-//  };
-//  myBinarySem01Handle = osSemaphoreNew(1, 1, &myBinarySem01_attributes);
-
-//  /* definition and creation of myBinarySem02 */
-//  const osSemaphoreAttr_t myBinarySem02_attributes = {
-//    .name = "myBinarySem02"
-//  };
-//  myBinarySem02Handle = osSemaphoreNew(1, 1, &myBinarySem02_attributes);
-
-//  /* definition and creation of myBinarySem03 */
-//  const osSemaphoreAttr_t myBinarySem03_attributes = {
-//    .name = "myBinarySem03"
-//  };
-//  myBinarySem03Handle = osSemaphoreNew(1, 1, &myBinarySem03_attributes);
-
-//  /* definition and creation of myBinarySem04 */
-//  const osSemaphoreAttr_t myBinarySem04_attributes = {
-//    .name = "myBinarySem04"
-//  };
-//  myBinarySem04Handle = osSemaphoreNew(1, 1, &myBinarySem04_attributes);
-
-//  /* definition and creation of myBinarySem05 */
-//  const osSemaphoreAttr_t myBinarySem05_attributes = {
-//    .name = "myBinarySem05"
-//  };
-//  myBinarySem05Handle = osSemaphoreNew(1, 1, &myBinarySem05_attributes);
-
+ 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
-  for(int i = 0; i < Philosofer_NUMBER; i++)
-	{
-		xSemaphorePhilosofer[i] = xSemaphoreCreateBinary();  
-		if( xSemaphorePhilosofer[i]  == NULL ) 
-		{    /* There was insufficient FreeRTOS heap available for the semaphore to be created successfully. */
-				 while (1);    
-		}
-		else
-		{
-				if( xSemaphoreGive( xSemaphorePhilosofer[i]  ) != pdTRUE )
-				{
-					while (1);
-				}
-		}	
+  for(int i = 0; i < N_PHILOSOPHERS ; i++)
+  {
+	xSemaphorePhilosofer[i] = xSemaphoreCreateBinary();  
+	if( xSemaphorePhilosofer[i]  == NULL ) 
+	{    /* There was insufficient FreeRTOS heap available for the semaphore to be created successfully. */
+		 while(1);    
 	}
-	
+  }
+		
 	// creating semaphor for taking fork
 	xSemaphoreTakingFork = xSemaphoreCreateBinary();
 	if( xSemaphoreTakingFork  == NULL ) 
-		{    /* There was insufficient FreeRTOS heap available for the semaphore to be created successfully. */
-				 while (1);    
-		}
-		else
+	{    /* There was insufficient FreeRTOS heap available for the semaphore to be created successfully. */
+		while(1);    
+	}
+	else
+	{
+		if( xSemaphoreGive(xSemaphoreTakingFork) != pdTRUE )
 		{
-				if( xSemaphoreGive(xSemaphoreTakingFork) != pdTRUE )
-				{
-					while (1);
-				}
+			while(1);
 		}
+	}
   /* USER CODE END RTOS_SEMAPHORES */
 
   /* USER CODE BEGIN RTOS_TIMERS */
@@ -219,48 +173,26 @@ int main(void)
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* definition and creation of myTask01 */
-  const osThreadAttr_t myTask01_attributes = {
-    .name = "myTask01",
-    .priority = (osPriority_t) osPriorityLow,
-    .stack_size = 64
-  };
-  myTask01Handle = osThreadNew(StartTask01, NULL, &myTask01_attributes);
-
-  /* definition and creation of myTask02 */
-  const osThreadAttr_t myTask02_attributes = {
-    .name = "myTask02",
-    .priority = (osPriority_t) osPriorityLow,
-    .stack_size = 64
-  };
-  myTask02Handle = osThreadNew(StartTask02, NULL, &myTask02_attributes);
-
-  /* definition and creation of myTask03 */
-  const osThreadAttr_t myTask03_attributes = {
-    .name = "myTask03",
-    .priority = (osPriority_t) osPriorityLow,
-    .stack_size = 64
-  };
-  myTask03Handle = osThreadNew(StartTask03, NULL, &myTask03_attributes);
-
-  /* definition and creation of myTask04 */
-  const osThreadAttr_t myTask04_attributes = {
-    .name = "myTask04",
-    .priority = (osPriority_t) osPriorityLow,
-    .stack_size = 64
-  };
-  myTask04Handle = osThreadNew(StartTask04, NULL, &myTask04_attributes);
-
-  /* definition and creation of myTask05 */
-  const osThreadAttr_t myTask05_attributes = {
-    .name = "myTask05",
-    .priority = (osPriority_t) osPriorityLow,
-    .stack_size = 64
-  };
-  myTask05Handle = osThreadNew(StartTask05, NULL, &myTask05_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
+  
+  /* definition and creation of myTask01 */
+  xTaskCreate(StartTask01, 		/* Function that implements the task. */
+				"philosopher1",		/* Text name for the task. */
+							64,		/* Stack size in words, not bytes. */
+						  NULL,		/* Parameter passed into the task. */
+							 0,		/* Priority at which the task is created. */
+				 myTask01Handle);
+	/* definition and creation of myTask02 */
+	xTaskCreate(StartTask02, "philosopher2", 64, NULL, 0, myTask02Handle);
+	/* definition and creation of myTask03 */							
+	xTaskCreate(StartTask03, "philosopher3", 64, NULL, 0, myTask03Handle );
+	/* definition and creation of myTask04 */
+	xTaskCreate(StartTask04, "philosopher4", 64, NULL, 0, myTask04Handle );
+	/* definition and creation of myTask05 */	
+	xTaskCreate(StartTask05, "philosopher5", 64, NULL, 0, myTask05Handle );	
+  
 	uint8_t buffTx[] = "Tasks were created!\r\n";
 	HAL_UART_Transmit_DMA(&huart1, buffTx, sizeof(buffTx));
 	osDelay(100);
@@ -425,20 +357,20 @@ void takeFork (uint8_t philosopher)
 {
 	if (xSemaphoreTakingFork != NULL)
   {
-    if(osSemaphoreWait(xSemaphoreTakingFork , 100) == osOK)
+    if(osSemaphoreAcquire(xSemaphoreTakingFork , 100) == osOK)
     {
-			philosopherStatus[philosopher] = Phiholofer_WAITING;
-			//taking forks
-			tryToEat(philosopher);
-			//taking semaphor for philosofer how waithing for forks
-			osSemaphoreRelease(xSemaphoreTakingFork);
-		}
-		else
-		{
-			// taking semaphor for philosopher how whants to eat
-			xSemaphoreTake( xSemaphorePhilosofer[philosopher],  portMAX_DELAY );
-		}
+		philosopherStatus[philosopher] = WAITING;
+		//taking forks
+		tryToEat(philosopher);
+		//taking semaphor for philosofer how waithing for forks
+		osSemaphoreRelease(xSemaphoreTakingFork);
 	}
+	else
+	{
+		// taking semaphor for philosopher how whants to eat
+		xSemaphoreTake( xSemaphorePhilosofer[philosopher],  portMAX_DELAY);
+	}
+  }
 }
 
 /**
@@ -448,14 +380,14 @@ void takeFork (uint8_t philosopher)
   */
 void tryToEat(uint8_t philosopher)
 {
-		if (philosopherStatus[philosopher] == Phiholofer_WAITING 
-				  && philosopherStatus[LEFT_Fork_NUMBER(philosopher)] != Phiholofer_EATING 
-					&& philosopherStatus[RIGHT_Fork_NUMBER(philosopher)] != Phiholofer_EATING) 
-			{
-				philosopherStatus[philosopher] = Phiholofer_EATING;
-				// release semaphor for philosopher how whants to eat
-				xSemaphoreGive( xSemaphorePhilosofer[philosopher] );
-			}
+	if (philosopherStatus[philosopher] == WAITING 
+			  && philosopherStatus[LEFT_Fork_NUMBER(philosopher)] != EATING 
+				&& philosopherStatus[RIGHT_Fork_NUMBER(philosopher)] != EATING)	
+	{
+		philosopherStatus[philosopher] = EATING;
+		// release semaphor for philosopher how whants to eat
+		xSemaphoreGive( xSemaphorePhilosofer[philosopher] );
+	}
 }
 
 /**
@@ -465,9 +397,9 @@ void tryToEat(uint8_t philosopher)
   */
 void putFork (uint8_t philosopher)
 {
-	if(osSemaphoreWait(xSemaphoreTakingFork , 100) == osOK)
+	if(osSemaphoreAcquire(xSemaphoreTakingFork , 100) == osOK)
 	{
-		philosopherStatus[philosopher] = Phiholofer_THINKING;
+		philosopherStatus[philosopher] = THINKING;
 		tryToEat(LEFT_Fork_NUMBER(philosopher));
 		tryToEat(RIGHT_Fork_NUMBER(philosopher));
 		osSemaphoreRelease(xSemaphoreTakingFork);
@@ -490,40 +422,28 @@ void StartTask01(void *argument)
   /* Infinite loop */
   for(;;)
   {
-//	if( xSemaphoreTake( myBinarySem01Handle, 10 ) == pdTRUE)
-//	{
-//		if( xSemaphoreTake( myBinarySem02Handle, 10 ) == pdTRUE)
-//		{
-//			uint8_t buffTx[] = "Philosopher_1 is eating!\r\n";
-//			HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_8);
-//			HAL_UART_Transmit_DMA(&huart1, buffTx, sizeof(buffTx));
-//			xSemaphoreGive( myBinarySem02Handle );
-//		}
-//		xSemaphoreGive( myBinarySem01Handle );
-//	}
-//	else
-//	{
-//		xSemaphoreGive( myBinarySem02Handle );
-//	}
-	 // Philosopher is thinking
-		osDelay(100);
-		//trying to take for		(PHIL1);
-		
-		if(xSemaphoreTake( xSemaphorePhilosofer[PHIL1],  portMAX_DELAY ) == pdTRUE && philosopherStatus[PHIL1] == Phiholofer_EATING) 
-		{ 
-				/******** eating *******/
-				HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_8);
-				osDelay(100);
-				HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_8);
-				osDelay(100);
-				/******** eating *******/
-				xSemaphoreGive( xSemaphorePhilosofer[PHIL1]);
-				putFork(PHIL1);
-		}
-		else
-		{
-			osDelay(10);
-		}
+	/*  thinking */
+	osDelay(100);
+	/*  take forks */
+	takeFork (PHIL1);
+	
+	if(xSemaphoreTake( xSemaphorePhilosofer[PHIL1],  portMAX_DELAY ) == pdTRUE && philosopherStatus[PHIL1] == 2) 
+	{ 
+		/* eating */
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_15, GPIO_PIN_SET);
+		osDelay(1000);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_15, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_RESET);
+		osDelay(1000);
+		/* eating */
+		xSemaphoreGive( xSemaphorePhilosofer[PHIL1]);
+		putFork(PHIL1);
+	}
+	else
+	{
+		osDelay(10);
+	}
   }
   /* USER CODE END 5 */ 
 }
@@ -541,22 +461,28 @@ void StartTask02(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	if( xSemaphoreTake( myBinarySem02Handle, 10 ) == pdTRUE)
-	{
-		if( xSemaphoreTake( myBinarySem03Handle, 10 ) == pdTRUE)
-		{
-			uint8_t buffTx[] = "Philosopher_2 is eating!\r\n";
-			HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_9);
-			HAL_UART_Transmit_DMA(&huart1, buffTx, sizeof(buffTx));
-			xSemaphoreGive( myBinarySem03Handle );
-		}
-		xSemaphoreGive( myBinarySem02Handle );
+	/*  thinking */
+	osDelay(100);
+	/*  take forks */
+	takeFork (PHIL2);
+	
+	if(xSemaphoreTake( xSemaphorePhilosofer[PHIL2],  portMAX_DELAY ) == pdTRUE && philosopherStatus[PHIL2] == 2) 
+	{ 
+		/* eating */
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_SET);
+		osDelay(1000);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_11, GPIO_PIN_RESET);
+		osDelay(1000);
+		/* eating */
+		xSemaphoreGive(xSemaphorePhilosofer[PHIL2]);
+		putFork(PHIL2);
 	}
 	else
 	{
-		xSemaphoreGive( myBinarySem03Handle );
+		osDelay(10);
 	}
-    osDelay(1000);
   }
   /* USER CODE END StartTask02 */
 }
@@ -574,7 +500,28 @@ void StartTask03(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	/*  thinking */
+	osDelay(70);
+	/*  take forks */
+	takeFork (PHIL3);
+	
+	if(xSemaphoreTake( xSemaphorePhilosofer[PHIL3],  portMAX_DELAY ) == pdTRUE && philosopherStatus[PHIL3] == 2) 
+	{ 
+		/* eating */
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_SET);
+		osDelay(1000);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_12, GPIO_PIN_RESET);
+		osDelay(1000);
+		/* eating */
+		xSemaphoreGive(xSemaphorePhilosofer[PHIL3]);
+		putFork(PHIL3);
+	}
+	else
+	{
+		osDelay(10);
+	}
   }
   /* USER CODE END StartTask03 */
 }
@@ -592,7 +539,28 @@ void StartTask04(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	/*  thinking */
+	osDelay(100);
+	/*  take forks */
+	takeFork (PHIL4);
+	
+	if(xSemaphoreTake( xSemaphorePhilosofer[PHIL4],  portMAX_DELAY ) == pdTRUE && philosopherStatus[PHIL4] == 2) 
+	{ 
+		/* eating */
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_14, GPIO_PIN_SET);
+		osDelay(1000);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_14, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_RESET);
+		osDelay(1000);
+		/* eating */
+		xSemaphoreGive(xSemaphorePhilosofer[PHIL4]);
+		putFork(PHIL4);
+	}
+	else
+	{
+		osDelay(10);
+	}
   }
   /* USER CODE END StartTask04 */
 }
@@ -610,7 +578,28 @@ void StartTask05(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	/*  thinking */
+	osDelay(100);
+	/*  take forks */
+	takeFork (PHIL5);
+	
+	if(xSemaphoreTake( xSemaphorePhilosofer[PHIL5],  portMAX_DELAY ) == pdTRUE && philosopherStatus[PHIL5] == 2) 
+	{ 
+	  /* eating */
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_14, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_15, GPIO_PIN_SET);
+		osDelay(1000);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_15, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_14, GPIO_PIN_RESET);
+		osDelay(1000);
+		/* eating */
+		xSemaphoreGive(xSemaphorePhilosofer[PHIL5]);
+		putFork(PHIL5);
+	}
+	else
+	{
+		osDelay(10);
+	}
   }
   /* USER CODE END StartTask05 */
 }

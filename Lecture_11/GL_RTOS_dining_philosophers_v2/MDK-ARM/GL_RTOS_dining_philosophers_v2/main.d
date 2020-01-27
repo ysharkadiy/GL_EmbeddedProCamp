@@ -43,3 +43,5 @@ gl_rtos_dining_philosophers_v2\main.o: ../Middlewares/Third_Party/FreeRTOS/Sourc
 gl_rtos_dining_philosophers_v2\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
 gl_rtos_dining_philosophers_v2\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 gl_rtos_dining_philosophers_v2\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
+gl_rtos_dining_philosophers_v2\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+gl_rtos_dining_philosophers_v2\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
