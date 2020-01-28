@@ -1,0 +1,2018 @@
+
+YS@LAPTOP-DHSNN406 MINGW64 ~
+$ git config --global user.name
+Yuliya Sharkadiy
+
+YS@LAPTOP-DHSNN406 MINGW64 ~
+$ git config --global user.email
+ysharkadiy@gmail.com
+
+YS@LAPTOP-DHSNN406 MINGW64 ~
+$ cd /y/GlobalLogic_ProCamp/
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp
+$ git clone git@github.com:ysharkadiy/GL_EmbeddedProCamp.git
+Cloning into 'GL_EmbeddedProCamp'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp
+$ ls
+'~$EC_Lecture_2_C_Lang_part1_m.pptx'  '2_Camp, Operations with branches.pptx'    Git_command.docx                   progit_v2.1.22.pdf
+'~$t_command.docx'                    '3_Camp, Operations with commits.pptx'     GL_EmbeddedProCamp/                SessionWithGit_v1.txt
+ 0753_Магда_Ю_С_Программирование.pdf   archive/                                  GL_EmbededProCamp_HomeWork/        Дэвид_Гриффитс,_Дон_Гриффитс_Изучаем.pdf
+'1_Camp, Git Introduction.pptx'        DevTestOps-Version_Control_with_Git.pdf   GL_EmbededProCamp_HomeWork_Copy/
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp
+$ cd GL_EmbeddedProCamp/
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (master)
+$ git remote -v
+origin  git@github.com:ysharkadiy/GL_EmbeddedProCamp.git (fetch)
+origin  git@github.com:ysharkadiy/GL_EmbeddedProCamp.git (push)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (master)
+$ git gui&
+[1] 1270
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (master)
+$ gitk&
+[2] 1277
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (master)
+$ git checkout -b lecture_1
+Switched to a new branch 'lecture_1'
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add .
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git reset --soft
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   Lecture_1/SessionWithGit_v1.txt
+        new file:   Lecture_1/main.c
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git reset --mixed
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+        Lecture_1/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+        Lecture_1/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add .gitignore
+warning: LF will be replaced by CRLF in .gitignore.
+The file will have its original line endings in your working directory
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Create .gitignore file."
+[lecture_1 263d7c6] Create .gitignore file.
+ 1 file changed, 4 insertions(+)
+ create mode 100644 .gitignore
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add .gitignore
+warning: LF will be replaced by CRLF in .gitignore.
+The file will have its original line endings in your working directory
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   .gitignore
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Modified .gitignore file to hide settings file from Eclipse."
+[lecture_1 af56c94] Modified .gitignore file to hide settings file from Eclipse.
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add .
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Create folder for Lecture 1 Home Assignment. Add *.txt file for Git work tracking. Added main.c files for Exercises."
+[lecture_1 f54ee1e] Create folder for Lecture 1 Home Assignment. Add *.txt file for Git work tracking. Added main.c files for Exercises.
+ 10 files changed, 282 insertions(+)
+ create mode 100644 Lecture_1/L1ex2/Debug/L1ex2.exe
+ create mode 100644 Lecture_1/L1ex2/Debug/main.o
+ create mode 100644 Lecture_1/L1ex2/main.c
+ create mode 100644 Lecture_1/L1ex3/Debug/L1ex3.exe
+ create mode 100644 Lecture_1/L1ex3/Debug/main.o
+ create mode 100644 Lecture_1/L1ex3/main.c
+ create mode 100644 Lecture_1/L1ex4/main.c
+ create mode 100644 Lecture_1/L1ex5/main.c
+ create mode 100644 Lecture_1/L1ex6/main.c
+ create mode 100644 Lecture_1/SessionWithGit_v1.txt
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git push
+fatal: The current branch lecture_1 has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin lecture_1
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ ^C
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$  git push --set-upstream origin lecture_1
+Enumerating objects: 27, done.
+Counting objects: 100% (27/27), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (21/21), done.
+Writing objects: 100% (26/26), 31.79 KiB | 361.00 KiB/s, done.
+Total 26 (delta 6), reused 0 (delta 0)
+remote: Resolving deltas: 100% (6/6), done.
+remote:
+remote: Create a pull request for 'lecture_1' on GitHub by visiting:
+remote:      https://github.com/ysharkadiy/GL_EmbeddedProCamp/pull/new/lecture_1
+remote:
+To github.com:ysharkadiy/GL_EmbeddedProCamp.git
+ * [new branch]      lecture_1 -> lecture_1
+Branch 'lecture_1' set up to track remote branch 'lecture_1' from 'origin'.
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git pull
+Already up to date.
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        deleted:    Lecture_1/L1ex2/Debug/main.o
+        deleted:    Lecture_1/L1ex2/main.c
+        deleted:    Lecture_1/L1ex3/Debug/L1ex3.exe
+        deleted:    Lecture_1/L1ex3/Debug/main.o
+        deleted:    Lecture_1/L1ex3/main.c
+        deleted:    Lecture_1/L1ex4/main.c
+        deleted:    Lecture_1/L1ex5/main.c
+        deleted:    Lecture_1/L1ex6/main.c
+        deleted:    Lecture_1/SessionWithGit_v1.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git restore .
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+nothing to commit, working tree clean
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        deleted:    Lecture_1/L1ex4/main.c
+        deleted:    Lecture_1/L1ex5/main.c
+        deleted:    Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/.gitignore
+        Lecture_1/L1ex1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        deleted:    Lecture_1/L1ex4/main.c
+        deleted:    Lecture_1/L1ex5/main.c
+        deleted:    Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/.gitignore
+        Lecture_1/L1ex1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        deleted:    Lecture_1/L1ex4/main.c
+        deleted:    Lecture_1/L1ex5/main.c
+        deleted:    Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/.metadata/
+        Lecture_1/L1ex1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    .gitignore
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        deleted:    Lecture_1/L1ex4/main.c
+        deleted:    Lecture_1/L1ex5/main.c
+        deleted:    Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/.gitignore
+        Lecture_1/L1ex1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    .gitignore
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        deleted:    Lecture_1/L1ex4/main.c
+        deleted:    Lecture_1/L1ex5/main.c
+        deleted:    Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/.gitignore
+        Lecture_1/L1ex1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add .gitignore
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    .gitignore
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        deleted:    Lecture_1/L1ex4/main.c
+        deleted:    Lecture_1/L1ex5/main.c
+        deleted:    Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/.gitignore
+        Lecture_1/L1ex1/
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        deleted:    Lecture_1/L1ex4/main.c
+        deleted:    Lecture_1/L1ex5/main.c
+        deleted:    Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/.metadata/
+        Lecture_1/L1ex1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        deleted:    Lecture_1/L1ex4/main.c
+        deleted:    Lecture_1/L1ex5/main.c
+        deleted:    Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add -a
+error: unknown switch `a'
+usage: git add [<options>] [--] <pathspec>...
+
+    -n, --dry-run         dry run
+    -v, --verbose         be verbose
+
+    -i, --interactive     interactive picking
+    -p, --patch[=<patch-mode>]
+                          select hunks interactively
+    -e, --edit            edit current diff and apply
+    -f, --force           allow adding otherwise ignored files
+    -u, --update          update tracked files
+    --renormalize         renormalize EOL of tracked files (implies -u)
+    -N, --intent-to-add   record only the fact that the path will be added later
+    -A, --all             add changes from all tracked and untracked files
+    --ignore-removal      ignore paths removed in the working tree (same as --no-all)
+    --refresh             don't add, only refresh the index
+    --ignore-errors       just skip files which cannot be added because of errors
+    --ignore-missing      check if - even missing - files are ignored in dry run
+    --chmod (+|-)x        override the executable bit of the listed files
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add -A
+warning: LF will be replaced by CRLF in .gitignore.
+The file will have its original line endings in your working directory
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   .gitignore
+        new file:   Lecture_1/L1ex1/Debug/L1ex1.exe
+        new file:   Lecture_1/L1ex1/Debug/main.o
+        new file:   Lecture_1/L1ex1/main.c
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   .gitignore
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex1/
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Changed to ignore all .metadata/ folders"
+[lecture_1 96c6401] Changed to ignore all .metadata/ folders
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Added aditional coments to explain commands setvbuf(). The Eclipse console has buffering problems on Windows. Basically, it doesn't flush the streams when a newline is received. (Unlike a normal windows console window). So, was added following functions in the start of the main function."
+[lecture_1 6dfcefa] Added aditional coments to explain commands setvbuf(). The Eclipse console has buffering problems on Windows. Basically, it doesn't flush the streams when a newline is received. (Unlike a normal windows console window). So, was added following functions in the start of the main function.
+ 3 files changed, 13 insertions(+), 8 deletions(-)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is ahead of 'origin/lecture_1' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git push
+Enumerating objects: 19, done.
+Counting objects: 100% (19/19), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (11/11), 1.78 KiB | 454.00 KiB/s, done.
+Total 11 (delta 4), reused 0 (delta 0)
+remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
+To github.com:ysharkadiy/GL_EmbeddedProCamp.git
+   f54ee1e..6dfcefa  lecture_1 -> lecture_1
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch and 'origin/lecture_1' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git push
+To github.com:ysharkadiy/GL_EmbeddedProCamp.git
+ ! [rejected]        lecture_1 -> lecture_1 (non-fast-forward)
+error: failed to push some refs to 'git@github.com:ysharkadiy/GL_EmbeddedProCamp.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git pull
+hint: Waiting for your editor to close the file...
+/usr/bin/bash: q: command not found
+
+Оболочка завершила работу 127
+
+Нажмите ENTER или введите команду для продолжения
+Merge made by the 'recursive' strategy.
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is ahead of 'origin/lecture_1' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git revert
+usage: git revert [<options>] <commit-ish>...
+   or: git revert <subcommand>
+
+    --quit                end revert or cherry-pick sequence
+    --continue            resume revert or cherry-pick sequence
+    --abort               cancel revert or cherry-pick sequence
+    --skip                skip current commit and continue
+    --cleanup <mode>      how to strip spaces and #comments from message
+    -n, --no-commit       don't automatically commit
+    -e, --edit            edit the commit message
+    -s, --signoff         add Signed-off-by:
+    -m, --mainline <parent-number>
+                          select mainline parent
+    --rerere-autoupdate   update the index with reused conflict resolution if possible
+    --strategy <strategy>
+                          merge strategy
+    -X, --strategy-option <option>
+                          option for merge strategy
+    -S, --gpg-sign[=<key-id>]
+                          GPG sign commit
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git log
+commit e88976b078670cc326239b2cc4d241d280b3281e (HEAD -> lecture_1)
+Merge: e7a916c 6dfcefa
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Fri Nov 15 00:26:17 2019 +0200
+
+    Merge branch 'lecture_1' of github.com:ysharkadiy/GL_EmbeddedProCamp into lecture_1
+
+commit e7a916c1b12ecff94202f943669f2abfcf32a8ca
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Fri Nov 15 00:19:11 2019 +0200
+
+    Added aditional coments to explain commands setvbuf().
+    The Eclipse console has buffering problems on Windows.
+    Basically, it doesn't flush the streams when a newline is received.
+    (Unlike a normal windows console window).
+    So, was added following functions in the start of the main function.
+
+commit 6dfcefa34991ea03a4c606182c5c241a78f21511 (origin/lecture_1)
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Fri Nov 15 00:19:11 2019 +0200
+
+    Added aditional coments to explain commands setvbuf(). The Eclipse console has buffering problems on Windows. Basically, it doesn't flush the streams when a newline is received. (Unlike a normal windows console window). So, was added following functions in the start of the main function.
+
+commit 96c64015a7fd932d86e2202d2c0c09b27d9aa29c
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Fri Nov 15 00:13:29 2019 +0200
+
+    Changed to ignore all .metadata/ folders
+
+commit f54ee1e5b7ba1aacc400031ff1d178fda9d73373
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:43:26 2019 +0200
+
+    Create folder for Lecture 1 Home Assignment. Add *.txt file for Git work tracking. Added main.c files for Exercises.
+
+commit af56c947027bbb5115db0cc0139bc87b5694832f
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:39:32 2019 +0200
+
+    Modified .gitignore file to hide settings file from Eclipse.
+
+commit 263d7c6bd2ec5688564257f03704a32ef6bcedf3
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:36:33 2019 +0200
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git reset HEAD~1
+Unstaged changes after reset:
+D       Lecture_1/L1ex2/Debug/L1ex2.exe
+M       Lecture_1/L1ex2/Debug/main.o
+M       Lecture_1/L1ex2/main.c
+M       Lecture_1/L1ex4/main.c
+M       Lecture_1/L1ex5/main.c
+M       Lecture_1/L1ex6/main.c
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git log
+commit e7a916c1b12ecff94202f943669f2abfcf32a8ca (HEAD -> lecture_1)
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Fri Nov 15 00:19:11 2019 +0200
+
+    Added aditional coments to explain commands setvbuf().
+    The Eclipse console has buffering problems on Windows.
+    Basically, it doesn't flush the streams when a newline is received.
+    (Unlike a normal windows console window).
+    So, was added following functions in the start of the main function.
+
+commit 96c64015a7fd932d86e2202d2c0c09b27d9aa29c
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Fri Nov 15 00:13:29 2019 +0200
+
+    Changed to ignore all .metadata/ folders
+
+commit f54ee1e5b7ba1aacc400031ff1d178fda9d73373
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:43:26 2019 +0200
+
+    Create folder for Lecture 1 Home Assignment. Add *.txt file for Git work tracking. Added main.c files for Exercises.
+
+commit af56c947027bbb5115db0cc0139bc87b5694832f
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:39:32 2019 +0200
+
+    Modified .gitignore file to hide settings file from Eclipse.
+
+commit 263d7c6bd2ec5688564257f03704a32ef6bcedf3
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:36:33 2019 +0200
+
+    Create .gitignore file.
+
+commit b12efe0e18c5ebb227d62870e5813434f0435a9e (origin/master, origin/HEAD, master)
+Author: ysharkadiy <55513462+ysharkadiy@users.noreply.github.com>
+Date:   Tue Nov 12 23:40:29 2019 +0200
+
+    Initial commit
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git log
+commit e7a916c1b12ecff94202f943669f2abfcf32a8ca (HEAD -> lecture_1)
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Fri Nov 15 00:19:11 2019 +0200
+
+    Added aditional coments to explain commands setvbuf().
+    The Eclipse console has buffering problems on Windows.
+    Basically, it doesn't flush the streams when a newline is received.
+    (Unlike a normal windows console window).
+    So, was added following functions in the start of the main function.
+
+commit 96c64015a7fd932d86e2202d2c0c09b27d9aa29c
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Fri Nov 15 00:13:29 2019 +0200
+
+    Changed to ignore all .metadata/ folders
+
+commit f54ee1e5b7ba1aacc400031ff1d178fda9d73373
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:43:26 2019 +0200
+
+    Create folder for Lecture 1 Home Assignment. Add *.txt file for Git work tracking. Added main.c files for Exercises.
+
+commit af56c947027bbb5115db0cc0139bc87b5694832f
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:39:32 2019 +0200
+
+    Modified .gitignore file to hide settings file from Eclipse.
+
+commit 263d7c6bd2ec5688564257f03704a32ef6bcedf3
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:36:33 2019 +0200
+
+    Create .gitignore file.
+
+commit b12efe0e18c5ebb227d62870e5813434f0435a9e (origin/master, origin/HEAD, master)
+Author: ysharkadiy <55513462+ysharkadiy@users.noreply.github.com>
+Date:   Tue Nov 12 23:40:29 2019 +0200
+
+    Initial commit
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch and 'origin/lecture_1' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git push
+To github.com:ysharkadiy/GL_EmbeddedProCamp.git
+ ! [rejected]        lecture_1 -> lecture_1 (non-fast-forward)
+error: failed to push some refs to 'git@github.com:ysharkadiy/GL_EmbeddedProCamp.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git reset --mixed
+Unstaged changes after reset:
+D       Lecture_1/L1ex2/Debug/L1ex2.exe
+M       Lecture_1/L1ex2/Debug/main.o
+M       Lecture_1/L1ex2/main.c
+M       Lecture_1/L1ex4/main.c
+M       Lecture_1/L1ex5/main.c
+M       Lecture_1/L1ex6/main.c
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git push
+To github.com:ysharkadiy/GL_EmbeddedProCamp.git
+ ! [rejected]        lecture_1 -> lecture_1 (non-fast-forward)
+error: failed to push some refs to 'git@github.com:ysharkadiy/GL_EmbeddedProCamp.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch and 'origin/lecture_1' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git log
+commit e7a916c1b12ecff94202f943669f2abfcf32a8ca (HEAD -> lecture_1)
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Fri Nov 15 00:19:11 2019 +0200
+
+    Added aditional coments to explain commands setvbuf().
+    The Eclipse console has buffering problems on Windows.
+    Basically, it doesn't flush the streams when a newline is received.
+    (Unlike a normal windows console window).
+    So, was added following functions in the start of the main function.
+
+commit 96c64015a7fd932d86e2202d2c0c09b27d9aa29c
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Fri Nov 15 00:13:29 2019 +0200
+
+    Changed to ignore all .metadata/ folders
+
+commit f54ee1e5b7ba1aacc400031ff1d178fda9d73373
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:43:26 2019 +0200
+
+    Create folder for Lecture 1 Home Assignment. Add *.txt file for Git work tracking. Added main.c files for Exercises.
+
+commit af56c947027bbb5115db0cc0139bc87b5694832f
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:39:32 2019 +0200
+
+    Modified .gitignore file to hide settings file from Eclipse.
+
+commit 263d7c6bd2ec5688564257f03704a32ef6bcedf3
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:36:33 2019 +0200
+
+    Create .gitignore file.
+
+commit b12efe0e18c5ebb227d62870e5813434f0435a9e (origin/master, origin/HEAD, master)
+Author: ysharkadiy <55513462+ysharkadiy@users.noreply.github.com>
+Date:   Tue Nov 12 23:40:29 2019 +0200
+
+    Initial commit
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git remote
+origin
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git remote -v
+origin  git@github.com:ysharkadiy/GL_EmbeddedProCamp.git (fetch)
+origin  git@github.com:ysharkadiy/GL_EmbeddedProCamp.git (push)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git reset HEAD~1
+Unstaged changes after reset:
+D       Lecture_1/L1ex2/Debug/L1ex2.exe
+M       Lecture_1/L1ex2/Debug/main.o
+M       Lecture_1/L1ex2/main.c
+M       Lecture_1/L1ex3/Debug/L1ex3.exe
+M       Lecture_1/L1ex3/Debug/main.o
+M       Lecture_1/L1ex3/main.c
+M       Lecture_1/L1ex4/main.c
+M       Lecture_1/L1ex5/main.c
+M       Lecture_1/L1ex6/main.c
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git log
+commit 96c64015a7fd932d86e2202d2c0c09b27d9aa29c (HEAD -> lecture_1)
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Fri Nov 15 00:13:29 2019 +0200
+
+    Changed to ignore all .metadata/ folders
+
+commit f54ee1e5b7ba1aacc400031ff1d178fda9d73373
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:43:26 2019 +0200
+
+    Create folder for Lecture 1 Home Assignment. Add *.txt file for Git work tracking. Added main.c files for Exercises.
+
+commit af56c947027bbb5115db0cc0139bc87b5694832f
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:39:32 2019 +0200
+
+    Modified .gitignore file to hide settings file from Eclipse.
+
+commit 263d7c6bd2ec5688564257f03704a32ef6bcedf3
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:36:33 2019 +0200
+
+    Create .gitignore file.
+
+commit b12efe0e18c5ebb227d62870e5813434f0435a9e (origin/master, origin/HEAD, master)
+Author: ysharkadiy <55513462+ysharkadiy@users.noreply.github.com>
+Date:   Tue Nov 12 23:40:29 2019 +0200
+
+    Initial commit
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git pull
+error: Your local changes to the following files would be overwritten by merge:
+        Lecture_1/L1ex3/Debug/L1ex3.exe
+        Lecture_1/L1ex3/Debug/main.o
+        Lecture_1/L1ex3/main.c
+Please commit your changes or stash them before you merge.
+Aborting
+Updating 96c6401..6dfcefa
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git pull
+Updating 96c6401..6dfcefa
+Fast-forward
+ Lecture_1/L1ex3/Debug/L1ex3.exe | Bin 59148 -> 59148 bytes
+ Lecture_1/L1ex3/Debug/main.o    | Bin 19443 -> 19439 bytes
+ Lecture_1/L1ex3/main.c          |  21 +++++++++++++--------
+ 3 files changed, 13 insertions(+), 8 deletions(-)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git log
+commit 6dfcefa34991ea03a4c606182c5c241a78f21511 (HEAD -> lecture_1, origin/lecture_1)
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Fri Nov 15 00:19:11 2019 +0200
+
+    Added aditional coments to explain commands setvbuf(). The Eclipse console has buffering problems on Windows. Basically, it doesn't flush the streams when a newline is received. (Unlike a normal windows console window). So, was added following functions in the start of the main function.
+
+commit 96c64015a7fd932d86e2202d2c0c09b27d9aa29c
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Fri Nov 15 00:13:29 2019 +0200
+
+    Changed to ignore all .metadata/ folders
+
+commit f54ee1e5b7ba1aacc400031ff1d178fda9d73373
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:43:26 2019 +0200
+
+    Create folder for Lecture 1 Home Assignment. Add *.txt file for Git work tracking. Added main.c files for Exercises.
+
+commit af56c947027bbb5115db0cc0139bc87b5694832f
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:39:32 2019 +0200
+
+    Modified .gitignore file to hide settings file from Eclipse.
+
+commit 263d7c6bd2ec5688564257f03704a32ef6bcedf3
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:36:33 2019 +0200
+
+    Create .gitignore file.
+
+commit b12efe0e18c5ebb227d62870e5813434f0435a9e (origin/master, origin/HEAD, master)
+Author: ysharkadiy <55513462+ysharkadiy@users.noreply.github.com>
+Date:   Tue Nov 12 23:40:29 2019 +0200
+
+    Initial commit
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit --amend -m "^C
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex1/
+        Lecture_1/L1ex3/.gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex1/
+        Lecture_1/L1ex3/.gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add Lecture_1/L1ex1/
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   Lecture_1/L1ex1/Debug/L1ex1.exe
+        new file:   Lecture_1/L1ex1/Debug/main.o
+        new file:   Lecture_1/L1ex1/main.c
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add Lecture_1/L1ex3
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   Lecture_1/L1ex1/Debug/L1ex1.exe
+        new file:   Lecture_1/L1ex1/Debug/main.o
+        new file:   Lecture_1/L1ex1/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git reset --soft
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   Lecture_1/L1ex1/Debug/L1ex1.exe
+        new file:   Lecture_1/L1ex1/Debug/main.o
+        new file:   Lecture_1/L1ex1/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git reset --mixed
+Unstaged changes after reset:
+D       Lecture_1/L1ex2/Debug/L1ex2.exe
+M       Lecture_1/L1ex2/Debug/main.o
+M       Lecture_1/L1ex2/main.c
+M       Lecture_1/L1ex3/Debug/L1ex3.exe
+M       Lecture_1/L1ex3/Debug/main.o
+M       Lecture_1/L1ex3/main.c
+M       Lecture_1/L1ex4/main.c
+M       Lecture_1/L1ex5/main.c
+M       Lecture_1/L1ex6/main.c
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add Lecture_1/L1ex1
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   Lecture_1/L1ex1/Debug/L1ex1.exe
+        new file:   Lecture_1/L1ex1/Debug/main.o
+        new file:   Lecture_1/L1ex1/main.c
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Added a completed first task."
+[lecture_1 8f4b897] Added a completed first task.
+ 3 files changed, 58 insertions(+)
+ create mode 100644 Lecture_1/L1ex1/Debug/L1ex1.exe
+ create mode 100644 Lecture_1/L1ex1/Debug/main.o
+ create mode 100644 Lecture_1/L1ex1/main.c
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is ahead of 'origin/lecture_1' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add Lecture_1/L1ex3
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Added more comments to third task."
+[lecture_1 79e0ec2] Added more comments to third task.
+ 3 files changed, 4 insertions(+), 1 deletion(-)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is ahead of 'origin/lecture_1' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git push
+Enumerating objects: 23, done.
+Counting objects: 100% (23/23), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (16/16), done.
+Writing objects: 100% (16/16), 6.66 KiB | 568.00 KiB/s, done.
+Total 16 (delta 7), reused 0 (delta 0)
+remote: Resolving deltas: 100% (7/7), completed with 4 local objects.
+To github.com:ysharkadiy/GL_EmbeddedProCamp.git
+   6dfcefa..79e0ec2  lecture_1 -> lecture_1
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Lecture_1/L1ex1/Debug/L1ex1.exe
+        modified:   Lecture_1/L1ex1/Debug/main.o
+        modified:   Lecture_1/L1ex1/main.c
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex1/.gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add Lecture_1/L1ex1
+warning: LF will be replaced by CRLF in Lecture_1/L1ex1/.gitignore.
+The file will have its original line endings in your working directory
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   Lecture_1/L1ex1/.gitignore
+        modified:   Lecture_1/L1ex1/Debug/L1ex1.exe
+        modified:   Lecture_1/L1ex1/Debug/main.o
+        modified:   Lecture_1/L1ex1/main.c
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   Lecture_1/L1ex1/Debug/L1ex1.exe
+        modified:   Lecture_1/L1ex1/Debug/main.o
+        modified:   Lecture_1/L1ex1/main.c
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Added support of macros for print uint64_t. Unsuccessfully."
+[lecture_1 ebfda0c] Added support of macros for print uint64_t. Unsuccessfully.
+ 3 files changed, 3 insertions(+)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is ahead of 'origin/lecture_1' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git push
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (8/8), 4.41 KiB | 564.00 KiB/s, done.
+Total 8 (delta 4), reused 0 (delta 0)
+remote: Resolving deltas: 100% (4/4), completed with 3 local objects.
+To github.com:ysharkadiy/GL_EmbeddedProCamp.git
+   79e0ec2..ebfda0c  lecture_1 -> lecture_1
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git log
+commit ebfda0c557c9ff837cdba3a961a33c0a6b1c5e09 (HEAD -> lecture_1, origin/lecture_1)
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Sun Nov 17 17:11:00 2019 +0200
+
+    Added support of macros for print uint64_t. Unsuccessfully.
+
+commit 79e0ec2b9be295fe24f40e2343cba42cd63e1d87
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Sun Nov 17 16:32:58 2019 +0200
+
+    Added more comments to third task.
+
+commit 8f4b8974edf2192a52cf4321a999c90ec2e17aed
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Sun Nov 17 16:24:31 2019 +0200
+
+    Added a completed first task.
+
+commit 6dfcefa34991ea03a4c606182c5c241a78f21511
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Fri Nov 15 00:19:11 2019 +0200
+
+    Added aditional coments to explain commands setvbuf(). The Eclipse console has buffering problems on Windows. Basically, it doesn't flush the streams when a newline is received. (Unlike a normal windows console window). So, was added following functions in the start of the main function.
+
+Notes:
+
+commit 96c64015a7fd932d86e2202d2c0c09b27d9aa29c
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Fri Nov 15 00:13:29 2019 +0200
+
+    Changed to ignore all .metadata/ folders
+
+commit f54ee1e5b7ba1aacc400031ff1d178fda9d73373
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:43:26 2019 +0200
+
+    Create folder for Lecture 1 Home Assignment. Add *.txt file for Git work tracking. Added main.c files for Exercises.
+
+commit af56c947027bbb5115db0cc0139bc87b5694832f
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Thu Nov 14 01:39:32 2019 +0200
+
+    Modified .gitignore file to hide settings file from Eclipse.
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex2/.gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add Lecture_1/L1ex2
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Was added typecasting in swap_64 function. Was tried few method of "
+[lecture_1 9a2ff2c] Was added typecasting in swap_64 function. Was tried few method of
+ 3 files changed, 48 insertions(+), 1 deletion(-)
+ rewrite Lecture_1/L1ex2/Debug/L1ex2.exe (72%)
+ rewrite Lecture_1/L1ex2/Debug/main.o (97%)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is ahead of 'origin/lecture_1' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git log
+commit d3a391d3c46f7f560c9142accb680f34e0969c4e (HEAD -> lecture_1)
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Mon Nov 18 00:27:07 2019 +0200
+
+    Was added typecasting in swap_64 function.
+    Was tried a few method of printing uint64_t veriable.
+    As Result:
+     Ex.1. Swap MSB to LSB in uint16_t, uint32_t, uint64_t.
+     Result 16 = 0xcdab
+     Result 32 = 0x4d3c2b1a
+     Result 64 = 0X8877665544332211
+     Have a good day :)
+     Work was finished.
+
+commit ebfda0c557c9ff837cdba3a961a33c0a6b1c5e09 (origin/lecture_1)
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Sun Nov 17 17:11:00 2019 +0200
+
+    Added support of macros for print uint64_t. Unsuccessfully.
+
+commit 79e0ec2b9be295fe24f40e2343cba42cd63e1d87
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Sun Nov 17 16:32:58 2019 +0200
+
+    Added more comments to third task.
+
+commit 8f4b8974edf2192a52cf4321a999c90ec2e17aed
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Sun Nov 17 16:24:31 2019 +0200
+
+    Added a completed first task.
+
+commit 6dfcefa34991ea03a4c606182c5c241a78f21511
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Fri Nov 15 00:19:11 2019 +0200
+
+    Added aditional coments to explain commands setvbuf(). The Eclipse console has buffering problems on Windows. Basically, it doesn't flush the streams when a newline is received. (Unlike a normal windows console window). So, was added following functions in the start of the main function.
+
+Notes:
+
+commit 96c64015a7fd932d86e2202d2c0c09b27d9aa29c
+Author: Yuliya Sharkadiy <ysharkadiy@gmail.com>
+Date:   Fri Nov 15 00:13:29 2019 +0200
+
+    Changed to ignore all .metadata/ folders
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git push
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (8/8), 7.89 KiB | 734.00 KiB/s, done.
+Total 8 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 2 local objects.
+To github.com:ysharkadiy/GL_EmbeddedProCamp.git
+   ebfda0c..d3a391d  lecture_1 -> lecture_1
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Lecture_1/L1ex1/Debug/L1ex1.exe
+        modified:   Lecture_1/L1ex1/Debug/main.o
+        modified:   Lecture_1/L1ex1/main.c
+        modified:   Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex1/.gitignore
+        Lecture_1/L1ex2/.gitignore
+        Lecture_1/L1ex3/.gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add Lecture_1/L1ex1
+warning: LF will be replaced by CRLF in Lecture_1/L1ex1/.gitignore.
+The file will have its original line endings in your working directory
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git reset --mixed
+Unstaged changes after reset:
+M       .gitignore
+M       Lecture_1/L1ex1/Debug/L1ex1.exe
+M       Lecture_1/L1ex1/Debug/main.o
+M       Lecture_1/L1ex1/main.c
+M       Lecture_1/L1ex2/Debug/L1ex2.exe
+M       Lecture_1/L1ex2/Debug/main.o
+M       Lecture_1/L1ex2/main.c
+M       Lecture_1/L1ex3/Debug/L1ex3.exe
+M       Lecture_1/L1ex3/Debug/main.o
+M       Lecture_1/L1ex3/main.c
+M       Lecture_1/L1ex4/main.c
+M       Lecture_1/L1ex5/main.c
+M       Lecture_1/L1ex6/main.c
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+        modified:   Lecture_1/L1ex1/Debug/L1ex1.exe
+        modified:   Lecture_1/L1ex1/Debug/main.o
+        modified:   Lecture_1/L1ex1/main.c
+        modified:   Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex1/.gitignore
+        Lecture_1/L1ex2/.gitignore
+        Lecture_1/L1ex3/.gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+        modified:   Lecture_1/L1ex1/Debug/L1ex1.exe
+        modified:   Lecture_1/L1ex1/Debug/main.o
+        modified:   Lecture_1/L1ex1/main.c
+        modified:   Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex1/.gitignore
+        Lecture_1/L1ex2/.gitignore
+        Lecture_1/L1ex3/.gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+        modified:   Lecture_1/L1ex1/Debug/L1ex1.exe
+        modified:   Lecture_1/L1ex1/Debug/main.o
+        modified:   Lecture_1/L1ex1/main.c
+        modified:   Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/L1ex2/.gitignore
+        Lecture_1/L1ex3/.gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+        modified:   Lecture_1/L1ex1/Debug/L1ex1.exe
+        modified:   Lecture_1/L1ex1/Debug/main.o
+        modified:   Lecture_1/L1ex1/main.c
+        modified:   Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add .gitignore
+warning: LF will be replaced by CRLF in .gitignore.
+The file will have its original line endings in your working directory
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Added more eclipse systems files to ignore list"
+[lecture_1 d920b89] Added more eclipse systems files to ignore list
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add Lecture_1/L1ex1
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is ahead of 'origin/lecture_1' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   Lecture_1/L1ex1/Debug/L1ex1.exe
+        modified:   Lecture_1/L1ex1/Debug/main.o
+        modified:   Lecture_1/L1ex1/main.c
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Ex1 is Done."
+[lecture_1 7f881c0] Ex1 is Done.
+ 3 files changed, 16 insertions(+), 8 deletions(-)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is ahead of 'origin/lecture_1' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Lecture_1/L1ex2/Debug/L1ex2.exe
+        modified:   Lecture_1/L1ex2/Debug/main.o
+        modified:   Lecture_1/L1ex2/main.c
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add Lecture_1/L1ex2
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Ex.2 is Done."
+[lecture_1 faaf612] Ex.2 is Done.
+ 3 files changed, 41 insertions(+), 69 deletions(-)
+ rewrite Lecture_1/L1ex2/Debug/L1ex2.exe (63%)
+ rewrite Lecture_1/L1ex2/Debug/main.o (68%)
+ rewrite Lecture_1/L1ex2/main.c (70%)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is ahead of 'origin/lecture_1' by 3 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Lecture_1/L1ex3/Debug/L1ex3.exe
+        modified:   Lecture_1/L1ex3/Debug/main.o
+        modified:   Lecture_1/L1ex3/main.c
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add Lecture_1/L1ex3
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Ex.3 is Done."
+[lecture_1 0fb2516] Ex.3 is Done.
+ 3 files changed, 1 insertion(+), 1 deletion(-)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git push
+Enumerating objects: 42, done.
+Counting objects: 100% (42/42), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (26/26), done.
+Writing objects: 100% (26/26), 7.18 KiB | 734.00 KiB/s, done.
+Total 26 (delta 10), reused 0 (delta 0)
+remote: Resolving deltas: 100% (10/10), completed with 5 local objects.
+To github.com:ysharkadiy/GL_EmbeddedProCamp.git
+   d3a391d..e38a483  lecture_1 -> lecture_1
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Lecture_1/L1ex4/main.c
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add Lecture_1/L1ex4
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   Lecture_1/L1ex4/main.c
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit
+hint: Waiting for your editor to close the file...       0 [sig] bash 1899! sigpacket::process: Suppressing signal 18 to win32 process (pid 14768)
+ 786623 [sig] bash 1899! sigpacket::process: Suppressing signal 18 to win32 process (pid 14768)
+[lecture_1 10d22cf] Ex.4. is done.
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$

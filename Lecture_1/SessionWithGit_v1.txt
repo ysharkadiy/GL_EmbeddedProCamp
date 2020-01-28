@@ -1,0 +1,169 @@
+
+YS@LAPTOP-DHSNN406 MINGW64 ~
+$ git config --global user.name
+Yuliya Sharkadiy
+
+YS@LAPTOP-DHSNN406 MINGW64 ~
+$ git config --global user.email
+ysharkadiy@gmail.com
+
+YS@LAPTOP-DHSNN406 MINGW64 ~
+$ cd /y/GlobalLogic_ProCamp/
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp
+$ git clone git@github.com:ysharkadiy/GL_EmbeddedProCamp.git
+Cloning into 'GL_EmbeddedProCamp'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp
+$ ls
+'~$EC_Lecture_2_C_Lang_part1_m.pptx'  '2_Camp, Operations with branches.pptx'    Git_command.docx                   progit_v2.1.22.pdf
+'~$t_command.docx'                    '3_Camp, Operations with commits.pptx'     GL_EmbeddedProCamp/                SessionWithGit_v1.txt
+ 0753_Магда_Ю_С_Программирование.pdf   archive/                                  GL_EmbededProCamp_HomeWork/        Дэвид_Гриффитс,_Дон_Гриффитс_Изучаем.pdf
+'1_Camp, Git Introduction.pptx'        DevTestOps-Version_Control_with_Git.pdf   GL_EmbededProCamp_HomeWork_Copy/
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp
+$ cd GL_EmbeddedProCamp/
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (master)
+$ git remote -v
+origin  git@github.com:ysharkadiy/GL_EmbeddedProCamp.git (fetch)
+origin  git@github.com:ysharkadiy/GL_EmbeddedProCamp.git (push)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (master)
+$ git gui&
+[1] 1270
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (master)
+$ gitk&
+[2] 1277
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (master)
+$ git checkout -b lecture_1
+Switched to a new branch 'lecture_1'
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add .
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git reset --soft
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   Lecture_1/SessionWithGit_v1.txt
+        new file:   Lecture_1/main.c
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git reset --mixed
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+        Lecture_1/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+        Lecture_1/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add .gitignore
+warning: LF will be replaced by CRLF in .gitignore.
+The file will have its original line endings in your working directory
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Create .gitignore file."
+[lecture_1 263d7c6] Create .gitignore file.
+ 1 file changed, 4 insertions(+)
+ create mode 100644 .gitignore
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add .gitignore
+warning: LF will be replaced by CRLF in .gitignore.
+The file will have its original line endings in your working directory
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   .gitignore
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/
+
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Modified .gitignore file to hide settings file from Eclipse."
+[lecture_1 af56c94] Modified .gitignore file to hide settings file from Eclipse.
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$
