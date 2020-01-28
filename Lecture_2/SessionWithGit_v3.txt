@@ -1,0 +1,173 @@
+
+YS@LAPTOP-DHSNN406 MINGW64 ~
+$ cd y/
+bash: cd: y/: No such file or directory
+
+YS@LAPTOP-DHSNN406 MINGW64 ~
+$ cd /y
+
+YS@LAPTOP-DHSNN406 MINGW64 /y
+$ ls
+'$RECYCLE.BIN'/   Builder/                      eclipse_MCU/     eclipse_Python/   GlobalLogic
+ Books/           DialogSemiconductorCompany/   eclipse_MinGW/   ETCetera/        'Keil projec
+
+YS@LAPTOP-DHSNN406 MINGW64 /y
+$ cd GlobalLogic_ProCamp/
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp
+$ ls
+'~$EC_Lecture_2_C_Lang_part1_m.pptx'   archive/      FPGA/   GL_EmbeddedProCamp/           GL_
+'~$t_command.docx'                     C_language/   Git/    GL_EmbededProCamp_HomeWork/   MCU
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp
+$ cd GL_EmbeddedProCamp/
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is ahead of 'origin/lecture_1' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_1/SessionWithGit_v2.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ gitk&
+[1] 1963
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git gui&
+[2] 1967
+[1]   Done                    gitk
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git push
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 879 bytes | 439.00 KiB/s, done.
+Total 5 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:ysharkadiy/GL_EmbeddedProCamp.git
+   e38a483..6010ba3  lecture_1 -> lecture_1
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add Lecture_1/SessionWithGit_v2.txt
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Added one more session with Git."
+[lecture_1 efa43fe] Added one more session with Git.
+ 1 file changed, 2018 insertions(+)
+ create mode 100644 Lecture_1/SessionWithGit_v2.txt
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git push
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 6.53 KiB | 1.31 MiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:ysharkadiy/GL_EmbeddedProCamp.git
+   6010ba3..efa43fe  lecture_1 -> lecture_1
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        sh.exe.stackdump
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git status
+On branch lecture_1
+Your branch is up to date with 'origin/lecture_1'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+        modified:   Lecture_1/L1ex5/main.c
+        modified:   Lecture_1/L1ex6/main.c
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add Lecture_1/L1ex5/main.c
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Ex5 is done."
+[lecture_1 3b157ce] Ex5 is done.
+ 1 file changed, 46 insertions(+)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add Lecture_1/L1ex6/main.c
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Ex6 is done."
+[lecture_1 59628c3] Ex6 is done.
+ 1 file changed, 23 insertions(+), 7 deletions(-)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git add .
+warning: LF will be replaced by CRLF in .gitignore.
+The file will have its original line endings in your working directory
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git commit -m "Added one more file to ignore."
+[lecture_1 e4ccc5a] Added one more file to ignore.
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git push
+Enumerating objects: 20, done.
+Counting objects: 100% (20/20), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (13/13), 2.36 KiB | 241.00 KiB/s, done.
+Total 13 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 2 local objects.
+To github.com:ysharkadiy/GL_EmbeddedProCamp.git
+   efa43fe..e4ccc5a  lecture_1 -> lecture_1
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_1)
+$ git checkout -b lecture_2
+Switched to a new branch 'lecture_2'
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_2)
+$ git status
+On branch lecture_2
+nothing to commit, working tree clean
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_2)
+$ git status
+On branch lecture_2
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Lecture_2/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+YS@LAPTOP-DHSNN406 MINGW64 /y/GlobalLogic_ProCamp/GL_EmbeddedProCamp (lecture_2)
+$
