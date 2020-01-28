@@ -54,8 +54,7 @@
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-extern uint8_t buffTx[256];
-extern uint16_t len;
+
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -187,8 +186,7 @@ void USART1_IRQHandler(void)
   /* USER CODE END USART1_IRQn 0 */
   HAL_UART_IRQHandler(&huart1);
   /* USER CODE BEGIN USART1_IRQn 1 */
-	HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_9);
-HAL_UART_Transmit_DMA(&huart1, buffTx, len);
+
   /* USER CODE END USART1_IRQn 1 */
 }
 

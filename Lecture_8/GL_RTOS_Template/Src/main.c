@@ -34,7 +34,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-uint8_t buffTx[256];
+uint8_t buffTx[256]; // created buff to transfer data through DMA to UART1
 uint16_t len, i;
 /* USER CODE END PD */
 
@@ -44,7 +44,8 @@ uint16_t len, i;
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-UART_HandleTypeDef huart1;
+UART_HandleTypeDef huart1;// UART1 pins connected to USB ST-LINK (PC5 & PC4) 
+					      // [for more detail please look through Schematic that atached to project]
 DMA_HandleTypeDef hdma_usart1_tx;
 
 osThreadId_t defaultTaskHandle;
@@ -297,14 +298,18 @@ static void MX_GPIO_Init(void)
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
-  for (i=0; i<256; i++) buffTx[i] = i;
-  len = sizeof(buffTx);
-  HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_8);
-  HAL_UART_Transmit_DMA(&huart1, buffTx, len);
+  
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	  if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0)!=GPIO_PIN_RESET)
+	{
+		for (i=0; i<256; i++) buffTx[i] = i;
+		len = sizeof(buffTx);
+		HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_8);
+		HAL_UART_Transmit_DMA(&huart1, buffTx, len);
+	}
+    osDelay(100);
   }
   /* USER CODE END 5 */ 
 }
