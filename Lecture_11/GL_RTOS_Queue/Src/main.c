@@ -38,6 +38,7 @@
 #define Red_LED GPIO_PIN_9 		///< Could not send data to the queue.
 #define Orange_LED GPIO_PIN_10 	///< Queue is empty.
 #define Green_LED GPIO_PIN_11 	///< Could not receive from the queue.
+#define Red_LED2 GPIO_PIN_13 	///< Queue is full.
 
 #define Green_LED2 GPIO_PIN_15 	///< Add data to queue every 0.1 sec
 
@@ -335,17 +336,17 @@ void SenderTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	if (HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_SET) 
+	if(osMessageQueueGetCount( myQueue01Handle ) < 25)
 	{
-	if(osMessageQueueGetCount( myQueue01Handle ) != 255)
-		//if( osMessageQueueGetSpace( myQueue01Handle ) != 1 )
+		HAL_GPIO_WritePin(LED_GPIO_Port, Red_LED2, GPIO_PIN_RESET);
+		if (HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_SET) 
 		{
 			if(lValueToSend < 25) lValueToSend++;
 			else lValueToSend = 0;
 
 			xStatus = osMessageQueuePut( myQueue01Handle, &lValueToSend, NULL, 0);
 			HAL_GPIO_TogglePin(LED_GPIO_Port, Green_LED2);
-				
+
 			if( xStatus != osOK)
 			{
 				uint8_t buffTx[] = "Could not send to the queue.\r\n";
@@ -353,13 +354,14 @@ void SenderTask(void *argument)
 				HAL_GPIO_WritePin(LED_GPIO_Port, Red_LED, GPIO_PIN_SET);
 				HAL_UART_Transmit_DMA(&huart1, buffTx, sizeof(buffTx));
 			}
-		}
-		else
-		{
-		//osDelay(1000);
-//			uint8_t buffTx[] = "Queue is full!\r\n";
-//			HAL_UART_Transmit_DMA(&huart1, buffTx, sizeof(buffTx));
-		}
+		}	
+	}
+	else
+	{
+		uint8_t buffTx[] = "Queue is full!\r\n";
+		HAL_GPIO_WritePin(LED_GPIO_Port, Red_LED2, GPIO_PIN_SET);
+		HAL_UART_Transmit_DMA(&huart1, buffTx, sizeof(buffTx));
+		osDelay(2*1000);//2sec
 	}
 	osDelay(100);
   }
